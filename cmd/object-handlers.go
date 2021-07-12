@@ -35,6 +35,7 @@ import (
 	"sync"
 	"time"
 
+	objectProcessor "gitee.com/changeden/minio-plugin-object-process/process"
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
 	miniogo "github.com/minio/minio-go/v7"
@@ -498,6 +499,16 @@ func (api objectAPIHandlers) getObjectHandler(ctx context.Context, objectAPI Obj
 	if rs != nil || opts.PartNumber > 0 {
 		statusCodeWritten = true
 		w.WriteHeader(http.StatusPartialContent)
+	}
+
+	// Process object
+	processReader, contentLength, contentType := objectProcessor.ProcessObject(gr.Reader, r)
+	gr.Reader = processReader
+	if contentLength != "" {
+		w.Header().Set(xhttp.ContentLength, contentLength)
+	}
+	if contentType != "" {
+		w.Header().Set(xhttp.ContentType, contentType)
 	}
 
 	// Write object content to response body
