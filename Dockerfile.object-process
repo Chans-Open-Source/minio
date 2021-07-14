@@ -1,0 +1,34 @@
+# docker build -t minio:object-process -f Dockerfile.object-process .
+FROM golang:1.16.5-alpine as builder
+
+LABEL maintainer="MinIO Inc <dev@min.io>"
+
+RUN echo "#aliyun" > /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.12/main/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.12/community/" >> /etc/apk/repositories
+RUN apk update
+RUN apk add --no-cache gcc musl-dev
+RUN apk add git==2.26.3-r0
+
+RUN go env -w GOPROXY=https://goproxy.io,direct
+
+RUN  \
+     git clone https://github.com/Chans-Open-Source/minio && cd minio && \
+     git checkout object-process-plugin && go install -v -ldflags "$(go run buildscripts/gen-ldflags.go)"
+
+FROM alpine:latest
+LABEL maintainer="unizone.tech"
+WORKDIR /opt/minio
+COPY --from=builder /go/bin/minio /opt/minio/app
+RUN echo "#aliyun" > /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.12/main/" >> /etc/apk/repositories
+RUN echo "https://mirrors.aliyun.com/alpine/v3.12/community/" >> /etc/apk/repositories
+RUN apk update
+RUN apk add --no-cache ca-certificates tzdata
+
+ENV TZ=Asia/Shanghai
+
+EXPOSE 9000
+
+VOLUME ["/data"]
+ENTRYPOINT [ "/opt/minio/app" ]
