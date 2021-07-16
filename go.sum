@@ -45,8 +45,8 @@ contrib.go.opencensus.io/resource v0.1.1/go.mod h1:F361eGI91LCmW1I/Saf+rX0+OFcig
 dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 git.apache.org/thrift.git v0.13.0 h1:/3bz5WZ+sqYArk7MBBBbDufMxKKOA56/6JO6psDpUDY=
 git.apache.org/thrift.git v0.13.0/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
-gitee.com/changeden/minio-plugin-object-process v0.0.2 h1:0TrjniGUHK7eNbbKPM9yiO4xZVHyYlh75ozOv/BiLaA=
-gitee.com/changeden/minio-plugin-object-process v0.0.2/go.mod h1:flcUX7nwPnd3Y9OxwIDD3K1WCzPt/BdcIZ2N0NKJwFs=
+gitee.com/changeden/minio-plugin-object-process v0.0.4 h1:BWWlEau5lXUhdfZqf1wYoRqWh3z8P8/P+Ru54l7sycs=
+gitee.com/changeden/minio-plugin-object-process v0.0.4/go.mod h1:flcUX7nwPnd3Y9OxwIDD3K1WCzPt/BdcIZ2N0NKJwFs=
 github.com/Azure/azure-amqp-common-go/v2 v2.1.0/go.mod h1:R8rea+gJRuJR6QxTir/XuEd+YuKoUiazDC/N96FiDEU=
 github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiUVpqIlpz/HKHylF4=
 github.com/Azure/azure-pipeline-go v0.2.2 h1:6oiIS9yaG6XCCzhgAgKFfIWyo4LLCiDhZot6ltoThhY=

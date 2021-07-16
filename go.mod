@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	cloud.google.com/go/storage v1.10.0
-	gitee.com/changeden/minio-plugin-object-process v0.0.2
+	gitee.com/changeden/minio-plugin-object-process v0.0.4
 	github.com/Azure/azure-pipeline-go v0.2.2
 	github.com/Azure/azure-storage-blob-go v0.10.0
 	github.com/Shopify/sarama v1.27.2

@@ -502,7 +502,8 @@ func (api objectAPIHandlers) getObjectHandler(ctx context.Context, objectAPI Obj
 	}
 
 	// Process object
-	processReader, contentLength, contentType := objectProcessor.ProcessObject(gr.Reader, r)
+	objectProcessQuery := r.URL.Query().Get("x-oss-process")
+	processReader, contentLength, contentType := objectProcessor.ProcessObject(gr.Reader, objectProcessQuery)
 	gr.Reader = processReader
 	if contentLength != "" {
 		w.Header().Set(xhttp.ContentLength, contentLength)
